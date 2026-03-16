@@ -1,5 +1,6 @@
 package com.aava.panels;
 
+import com.aava.components.UIComponents;
 import com.aava.utils.UITheme;
 
 import javax.swing.*;
@@ -49,15 +50,7 @@ public class LoginPanel extends JPanel {
 
         JButton registerButton = new JButton("Register");
         registerButton.setFont(new Font("Helvetica", Font.PLAIN, 16));
-        registerButton.setBackground(UITheme.ACCENT);
-        registerButton.setForeground(Color.BLACK);
-
-        registerButton.setFocusable(false);
-        registerButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        registerButton.setPreferredSize(new Dimension(200, 40));
-        registerButton.setMaximumSize(new Dimension(200, 40));
-        registerButton.setBorder(null);
+        UIComponents.buttonStyle(registerButton);
         registerButton.addActionListener(e -> layout.show(container, "Register"));
         sideBar.add(registerButton);
 
