@@ -5,26 +5,22 @@ import com.aava.utils.UITheme;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
-public class RegisterPanel extends JPanel {
+public class LoginPanel extends JPanel {
 
     private CardLayout layout;
     private JPanel container;
 
-    public RegisterPanel(CardLayout layout, JPanel container) {
+    public LoginPanel(CardLayout layout, JPanel container) {
 
         this.layout = layout;
         this.container = container;
 
-        // Initialize Panel
         this.setLayout(new BorderLayout());
-        this.setFont(new Font("Helvetica", Font.PLAIN, 16));
 
         this.add(sideBarPanel(), BorderLayout.WEST);
-        this.add(registerForm(), BorderLayout.CENTER);
+        this.add(LoginForm(), BorderLayout.CENTER);
     }
-
     private JPanel sideBarPanel() {
         JPanel rootSideBar = new JPanel(new GridBagLayout());
         rootSideBar.setPreferredSize(new Dimension(300, 0));
@@ -37,39 +33,39 @@ public class RegisterPanel extends JPanel {
 
         final int VSPACE = 15;
 
-        JLabel getStarted = new JLabel("Get started");
-        getStarted.setFont(new Font("Helvetica", Font.BOLD, 34));
-        getStarted.setForeground(UITheme.TEXT_PRIMARY);
-        getStarted.setAlignmentX(Component.CENTER_ALIGNMENT);
-        sideBar.add(getStarted);
+        JLabel welcomeBack = new JLabel("Welcome Back");
+        welcomeBack.setFont(new Font("Helvetica", Font.BOLD, 34));
+        welcomeBack.setForeground(UITheme.TEXT_PRIMARY);
+        welcomeBack.setAlignmentX(Component.CENTER_ALIGNMENT);
+        sideBar.add(welcomeBack);
         sideBar.add(Box.createVerticalStrut(VSPACE));
 
-        JLabel loginTransfer = new JLabel("Already have an account?");
-        loginTransfer.setFont(new Font("Helvetica", Font.PLAIN, 15));
-        loginTransfer.setForeground(UITheme.TEXT_SECONDARY);
-        loginTransfer.setAlignmentX(Component.CENTER_ALIGNMENT);
-        sideBar.add(loginTransfer);
+        JLabel RegisterTransfer = new JLabel("Don't have an account?");
+        RegisterTransfer.setFont(new Font("Helvetica", Font.PLAIN, 15));
+        RegisterTransfer.setForeground(UITheme.TEXT_SECONDARY);
+        RegisterTransfer.setAlignmentX(Component.CENTER_ALIGNMENT);
+        sideBar.add(RegisterTransfer);
         sideBar.add(Box.createVerticalStrut(VSPACE));
 
-        JButton loginButton = new JButton("Login");
-        loginButton.setFont(new Font("Helvetica", Font.PLAIN, 16));
-        loginButton.setBackground(UITheme.ACCENT);
-        loginButton.setForeground(Color.BLACK);
+        JButton registerButton = new JButton("Register");
+        registerButton.setFont(new Font("Helvetica", Font.PLAIN, 16));
+        registerButton.setBackground(UITheme.ACCENT);
+        registerButton.setForeground(Color.BLACK);
 
-        loginButton.setFocusable(false);
-        loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        registerButton.setFocusable(false);
+        registerButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        loginButton.setPreferredSize(new Dimension(200, 40));
-        loginButton.setMaximumSize(new Dimension(200, 40));
-        loginButton.setBorder(null);
-        loginButton.addActionListener(e -> layout.show(container, "Login"));
-        sideBar.add(loginButton);
+        registerButton.setPreferredSize(new Dimension(200, 40));
+        registerButton.setMaximumSize(new Dimension(200, 40));
+        registerButton.setBorder(null);
+        registerButton.addActionListener(e -> layout.show(container, "Register"));
+        sideBar.add(registerButton);
 
         rootSideBar.add(sideBar);
         return rootSideBar;
     }
 
-    private JPanel registerForm() {
+    private JPanel LoginForm() {
 
         final int VSPACE = 20;
 
@@ -86,7 +82,7 @@ public class RegisterPanel extends JPanel {
 
         // Form Title
 
-        JLabel formTitle =  new JLabel("Create Account");
+        JLabel formTitle =  new JLabel("Login");
         formTitle.setFont(new Font("Helvetica", Font.BOLD, 34));
         formTitle.setForeground(UITheme.TEXT_PRIMARY);
         formContainer.add(formTitle);
@@ -130,18 +126,21 @@ public class RegisterPanel extends JPanel {
 
         // Submit
 
-        JButton registerButton = new JButton("Register");
-        registerButton.setFont(new Font("Helvetica", Font.PLAIN, 17));
+        JButton loginButton = new JButton("Login");
+        loginButton.setFont(new Font("Helvetica", Font.PLAIN, 17));
 
-        registerButton.setForeground(UITheme.BACKGROUND);
-        registerButton.setBackground(UITheme.ACCENT);
-        registerButton.setFocusable(false);
+        loginButton.setForeground(UITheme.BACKGROUND);
+        loginButton.setBackground(UITheme.ACCENT);
+        loginButton.setFocusable(false);
 
-        registerButton.setMaximumSize(new Dimension(200, 40));
+        loginButton.setMaximumSize(new Dimension(200, 40));
 
-        formContainer.add(registerButton);
+        formContainer.add(loginButton);
         formContainer.add(Box.createVerticalStrut(VSPACE));
         formRoot.add(formContainer);
         return formRoot;
     }
+
+
+
 }
