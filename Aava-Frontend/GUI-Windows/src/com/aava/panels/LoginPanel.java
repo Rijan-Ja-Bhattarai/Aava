@@ -1,6 +1,7 @@
 package com.aava.panels;
 
 import com.aava.components.UIComponents;
+import com.aava.utils.UISpacing;
 import com.aava.utils.UITheme;
 
 import javax.swing.*;
@@ -32,24 +33,13 @@ public class LoginPanel extends JPanel {
         sideBar.setLayout(new BoxLayout(sideBar, BoxLayout.Y_AXIS));
         sideBar.setBackground(UITheme.BACKGROUND);
 
-        final int VSPACE = 15;
+        sideBar.add(UIComponents.createHeader("Welcome Back!"));
+        sideBar.add(Box.createVerticalStrut(UISpacing.SM));
 
-        JLabel welcomeBack = new JLabel("Welcome Back");
-        welcomeBack.setFont(new Font("Helvetica", Font.BOLD, 34));
-        welcomeBack.setForeground(UITheme.TEXT_PRIMARY);
-        welcomeBack.setAlignmentX(Component.CENTER_ALIGNMENT);
-        sideBar.add(welcomeBack);
-        sideBar.add(Box.createVerticalStrut(VSPACE));
-
-        JLabel RegisterTransfer = new JLabel("Don't have an account?");
-        RegisterTransfer.setFont(new Font("Helvetica", Font.PLAIN, 15));
-        RegisterTransfer.setForeground(UITheme.TEXT_SECONDARY);
-        RegisterTransfer.setAlignmentX(Component.CENTER_ALIGNMENT);
-        sideBar.add(RegisterTransfer);
-        sideBar.add(Box.createVerticalStrut(VSPACE));
+        sideBar.add(UIComponents.createLabel("Don't have an account?"));
+        sideBar.add(Box.createVerticalStrut(UISpacing.SM));
 
         JButton registerButton = new JButton("Register");
-        registerButton.setFont(new Font("Helvetica", Font.PLAIN, 16));
         UIComponents.buttonStyle(registerButton);
         registerButton.addActionListener(e -> layout.show(container, "Register"));
         sideBar.add(registerButton);
@@ -59,79 +49,44 @@ public class LoginPanel extends JPanel {
     }
 
     private JPanel LoginForm() {
-
-        final int VSPACE = 20;
-
+        
         JPanel formRoot =  new JPanel();
         formRoot.setLayout(new GridBagLayout());
         formRoot.setBackground(UITheme.BACKGROUND);
 
         // Form Container
 
-        JPanel formContainer = new JPanel();
-        formContainer.setLayout(new BoxLayout(formContainer, BoxLayout.Y_AXIS));
-        formContainer.setBackground(UITheme.SURFACE);
-        formContainer.setBorder(BorderFactory.createEmptyBorder(60, 40, 60, 40));
+        JPanel form = new JPanel();
+        form.setLayout(new BoxLayout(form, BoxLayout.Y_AXIS));
+        form.setBackground(UITheme.SURFACE);
+        form.setBorder(BorderFactory.createEmptyBorder(60, 40, 60, 40));
 
         // Form Title
-
-        JLabel formTitle =  new JLabel("Login");
-        formTitle.setFont(new Font("Helvetica", Font.BOLD, 34));
-        formTitle.setForeground(UITheme.TEXT_PRIMARY);
-        formContainer.add(formTitle);
-        formContainer.add(Box.createVerticalStrut(VSPACE));
+        form.add(UIComponents.createHeader("Login"));
+        form.add(Box.createVerticalStrut(UISpacing.LG));
 
         // Email Field
+        form.add(UIComponents.createLabel("Email"));
+        form.add(Box.createVerticalStrut(UISpacing.SM));
 
-        JLabel formEmail =  new JLabel("Email");
-        formEmail.setFont(new Font("Helvetica", Font.PLAIN, 14));
-        formEmail.setForeground(UITheme.TEXT_SECONDARY);
-        formContainer.add(formEmail);
-        formContainer.add(Box.createVerticalStrut(10));
-
-        JTextField formEmailField = new JTextField(20);
-        formEmailField.setFont(new Font("Helvetica", Font.PLAIN, 20));
-        formEmailField.setMaximumSize(new Dimension(900, 35));
-
-        formEmailField.setForeground(UITheme.TEXT_PRIMARY);
-        formEmailField.setBackground(UITheme.SURFACE);
-
-        formContainer.add(formEmailField);
-        formContainer.add(Box.createVerticalStrut(VSPACE));
+        form.add(UIComponents.createInputField());
+        form.add(Box.createVerticalStrut(UISpacing.MD));
 
         // Password Field
+        form.add(UIComponents.createLabel("Password"));
+        form.add(Box.createVerticalStrut(10));
 
-        JLabel formPassword = new JLabel("Password");
-        formPassword.setFont(new Font("Helvetica", Font.PLAIN, 14));
-        formPassword.setForeground(UITheme.TEXT_SECONDARY);
-        formContainer.add(formPassword);
-        formContainer.add(Box.createVerticalStrut(10));
-
-        JPasswordField formPasswordField = new JPasswordField();
-        formPasswordField.setFont(new Font("Helvetica", Font.PLAIN, 20));
-        formPasswordField.setMaximumSize(new Dimension(900, 35));
-
-        formPasswordField.setForeground(UITheme.TEXT_PRIMARY);
-        formPasswordField.setBackground(UITheme.SURFACE);
-
-        formContainer.add(formPasswordField);
-        formContainer.add(Box.createVerticalStrut(VSPACE));
+        form.add(UIComponents.createPasswordField());
+        form.add(Box.createVerticalStrut(UISpacing.MD));
 
         // Submit
 
         JButton loginButton = new JButton("Login");
-        loginButton.setFont(new Font("Helvetica", Font.PLAIN, 17));
-
-        loginButton.setForeground(UITheme.BACKGROUND);
-        loginButton.setBackground(UITheme.ACCENT);
-        loginButton.setFocusable(false);
-
-        loginButton.setMaximumSize(new Dimension(200, 40));
+        UIComponents.buttonStyle(loginButton);
         loginButton.addActionListener(e -> {layout.show(container, "PlanSelector");});
 
-        formContainer.add(loginButton);
-        formContainer.add(Box.createVerticalStrut(VSPACE));
-        formRoot.add(formContainer);
+        form.add(loginButton);
+        formRoot.add(form);
         return formRoot;
     }
 

@@ -34,7 +34,7 @@ public class UIComponents {
         return field;
     }
 
-    public static JLabel createFormLabel(String text) {
+    public static JLabel createLabel(String text) {
         JLabel label = new JLabel(text);
         label.setFont(UIFont.BODY);
         label.setForeground(UITheme.TEXT_PRIMARY);

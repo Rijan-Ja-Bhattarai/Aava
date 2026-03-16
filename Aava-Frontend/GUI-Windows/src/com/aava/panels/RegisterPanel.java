@@ -34,7 +34,7 @@ public class RegisterPanel extends JPanel {
         sideBar.add(UIComponents.createHeader("Get Started"));
         sideBar.add(Box.createVerticalStrut(UISpacing.SM));
 
-        sideBar.add(UIComponents.createFormLabel("Already have an account?"));
+        sideBar.add(UIComponents.createLabel("Already have an account?"));
         sideBar.add(Box.createVerticalStrut(UISpacing.SM));
 
         JButton loginButton = new JButton("Login");
@@ -55,17 +55,17 @@ public class RegisterPanel extends JPanel {
         formContainer.setBorder(BorderFactory.createEmptyBorder(60, 40, 60, 40));
 
         formContainer.add(UIComponents.createHeader("Create Account"));
-        formContainer.add(Box.createVerticalStrut(UISpacing.SM));
+        formContainer.add(Box.createVerticalStrut(UISpacing.LG));
 
-        formContainer.add(UIComponents.createFormLabel("Email"));
+        formContainer.add(UIComponents.createLabel("Email"));
         formContainer.add(Box.createVerticalStrut(UISpacing.SM));
         formContainer.add(UIComponents.createInputField());
-        formContainer.add(Box.createVerticalStrut(UISpacing.SM));
+        formContainer.add(Box.createVerticalStrut(UISpacing.MD));
 
-        formContainer.add(UIComponents.createFormLabel("Password"));
+        formContainer.add(UIComponents.createLabel("Password"));
         formContainer.add(Box.createVerticalStrut(UISpacing.SM));
         formContainer.add(UIComponents.createPasswordField());
-        formContainer.add(Box.createVerticalStrut(UISpacing.SM));
+        formContainer.add(Box.createVerticalStrut(UISpacing.MD));
 
         JButton registerButton = new JButton("Register");
         UIComponents.buttonStyle(registerButton);
