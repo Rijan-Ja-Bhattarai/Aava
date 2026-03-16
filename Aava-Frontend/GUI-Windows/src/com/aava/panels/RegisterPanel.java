@@ -138,6 +138,7 @@ public class RegisterPanel extends JPanel {
         registerButton.setFocusable(false);
 
         registerButton.setMaximumSize(new Dimension(200, 40));
+        registerButton.addActionListener(e -> layout.show(container, "PlanSelector"));
 
         formContainer.add(registerButton);
         formContainer.add(Box.createVerticalStrut(VSPACE));

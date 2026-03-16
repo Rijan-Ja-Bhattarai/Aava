@@ -134,6 +134,7 @@ public class LoginPanel extends JPanel {
         loginButton.setFocusable(false);
 
         loginButton.setMaximumSize(new Dimension(200, 40));
+        loginButton.addActionListener(e -> {layout.show(container, "PlanSelector");});
 
         formContainer.add(loginButton);
         formContainer.add(Box.createVerticalStrut(VSPACE));
