@@ -31,7 +31,7 @@ public class RegisterPanel extends JPanel {
         sideBar.setLayout(new BoxLayout(sideBar, BoxLayout.Y_AXIS));
         sideBar.setBackground(UITheme.BACKGROUND);
 
-        sideBar.add(UIComponents.createFormLabel("Get Started"));
+        sideBar.add(UIComponents.createHeader("Get Started"));
         sideBar.add(Box.createVerticalStrut(UISpacing.SM));
 
         sideBar.add(UIComponents.createFormLabel("Already have an account?"));

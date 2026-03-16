@@ -11,7 +11,6 @@ public class UIComponents {
         button.setBackground(UITheme.ACCENT);
         button.setForeground(Color.BLACK);
         button.setFocusable(false);
-        button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setPreferredSize(new Dimension(200, 40));
         button.setMaximumSize(new Dimension(200, 40));
         button.setBorder(null);
