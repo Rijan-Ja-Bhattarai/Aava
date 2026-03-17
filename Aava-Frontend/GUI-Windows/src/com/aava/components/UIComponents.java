@@ -49,4 +49,12 @@ public class UIComponents {
         label.setBackground(UITheme.SURFACE);
         return label;
     }
+
+    public static JLabel createSubTitle(String text) {
+        JLabel label = new JLabel(text);
+        label.setFont(UIFont.SUBTITLE);
+        label.setForeground(UITheme.TEXT_PRIMARY);
+        label.setBackground(UITheme.SURFACE);
+        return label;
+    }
 }

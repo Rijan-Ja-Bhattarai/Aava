@@ -1,15 +1,18 @@
 package com.aava.panels;
 
+import com.aava.components.UIComponents;
+import com.aava.utils.UISpacing;
 import com.aava.utils.UITheme;
-import com.aava.utils.UITextSize;
+import javax.swing.border.Border;
+
 
 import javax.swing.*;
 import java.awt.*;
 
 public class PlanSelector extends JPanel {
 
-    private CardLayout layout;
-    private JPanel container;
+    private final CardLayout layout;
+    private final JPanel container;
 
     public PlanSelector(CardLayout layout, JPanel container) {
         this.layout = layout;
@@ -17,16 +20,10 @@ public class PlanSelector extends JPanel {
 
         this.setLayout(new GridLayout(1, 2, 20, 20));
         this.setBackground(UITheme.BACKGROUND);
+        Border padding = BorderFactory.createEmptyBorder(20, 20, 20, 20);
+        this.setBorder(BorderFactory.createCompoundBorder(padding, padding));
         this.add(freePlanCard());
         this.add(proPlanCard());
-    }
-
-    private JLabel createFeatureLabel(String text) {
-        JLabel label = new JLabel(text);
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        label.setFont(new Font("Helvetica", Font.PLAIN, UITextSize.BODY));
-        label.setForeground(UITheme.TEXT_PRIMARY);
-        return label;
     }
 
     private JPanel freePlanCard() {
@@ -34,32 +31,57 @@ public class PlanSelector extends JPanel {
         freeCard.setLayout(new FlowLayout(FlowLayout.CENTER));
         freeCard.setBackground(UITheme.SURFACE);
 
-        JLabel freePlanLabel = new JLabel("Personal Plan");
-        freePlanLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        freePlanLabel.setFont(new Font("Helvetica", Font.BOLD, UITextSize.TITLE));
-        freePlanLabel.setForeground(UITheme.TEXT_PRIMARY);
-        freeCard.add(freePlanLabel);
+        freeCard.add(UIComponents.createHeader("Personal Plan"));
 
         JPanel freePlanContent = new JPanel();
         freePlanContent.setLayout(new BoxLayout(freePlanContent, BoxLayout.Y_AXIS));
         freePlanContent.setBackground(UITheme.SURFACE);
 
-        freePlanContent.add(createFeatureLabel("Context Window: 100k"));
-        freePlanContent.add(createFeatureLabel("Monthly Quota: 100 messages"));
-        freePlanContent.add(createFeatureLabel("Model Size: 15M parameters"));
-        freePlanContent.add(createFeatureLabel("Benchmark Score: ~28% MMLU"));
+        freePlanContent.add(Box.createVerticalStrut(UISpacing.XL));
+        freePlanContent.add(UIComponents.createSubTitle("Context Window: 100k"));
+        freePlanContent.add(Box.createVerticalStrut(UISpacing.LG));
+        freePlanContent.add(UIComponents.createSubTitle("Monthly Quota: 100 messages"));
+        freePlanContent.add(Box.createVerticalStrut(UISpacing.LG));
+        freePlanContent.add(UIComponents.createSubTitle("Model Size: 15M parameters"));
+        freePlanContent.add(Box.createVerticalStrut(UISpacing.LG));
+        freePlanContent.add(UIComponents.createSubTitle("Benchmark Score: ~28% MMLU"));
+        freePlanContent.add(Box.createVerticalStrut(UISpacing.LG));
 
+        JButton personalPlanButton = new JButton("Upgrade Later");
+        UIComponents.buttonStyle(personalPlanButton);
+        personalPlanButton.addActionListener(e -> {layout.show(container, "PersonalPlan");});
+        freePlanContent.add(personalPlanButton);
         freeCard.add(freePlanContent);
         return freeCard;
     }
 
     private JPanel proPlanCard() {
         JPanel proCard = new JPanel();
+        proCard.setLayout(new FlowLayout(FlowLayout.CENTER));
         proCard.setBackground(UITheme.SURFACE);
-        JLabel proPlanLabel = new JLabel("Pro Plan");
-        proPlanLabel.setFont(new Font("Helvetica", Font.BOLD, UITextSize.TITLE));
-        proPlanLabel.setForeground(UITheme.TEXT_PRIMARY);
-        proCard.add(proPlanLabel);
+
+        proCard.add(UIComponents.createHeader("Pro Plan"));
+
+        JPanel proPlanContent = new JPanel();
+        proPlanContent.setLayout(new BoxLayout(proPlanContent, BoxLayout.Y_AXIS));
+        proPlanContent.setBackground(UITheme.SURFACE);
+
+        proPlanContent.add(Box.createVerticalStrut(UISpacing.XL));
+        proPlanContent.add(UIComponents.createSubTitle("Context Window: 300k"));
+        proPlanContent.add(Box.createVerticalStrut(UISpacing.LG));
+        proPlanContent.add(UIComponents.createSubTitle("Monthly Quota: Unlimited"));
+        proPlanContent.add(Box.createVerticalStrut(UISpacing.LG));
+        proPlanContent.add(UIComponents.createSubTitle("Model Size: 120M parameters"));
+        proPlanContent.add(Box.createVerticalStrut(UISpacing.LG));
+        proPlanContent.add(UIComponents.createSubTitle("Benchmark Score: ~40% MMLU"));
+        proPlanContent.add(Box.createVerticalStrut(UISpacing.LG));
+
+        JButton proPlanButton = new JButton("Subscribe");
+        UIComponents.buttonStyle(proPlanButton);
+        proPlanButton.addActionListener(e -> {layout.show(container, "ProPlan");});
+        proPlanContent.add(proPlanButton);
+
+        proCard.add(proPlanContent);
         return proCard;
     }
 }
