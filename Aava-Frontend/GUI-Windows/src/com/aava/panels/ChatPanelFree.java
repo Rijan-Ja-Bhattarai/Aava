@@ -43,7 +43,7 @@ public class ChatPanelFree extends JPanel{
 
         return navBar;
     }
-    private JPanel chatHistory() {
+    protected JPanel chatHistory() {
         JPanel chatHistory = new JPanel();
 
         return chatHistory;
