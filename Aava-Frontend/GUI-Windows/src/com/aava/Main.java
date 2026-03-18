@@ -1,6 +1,7 @@
 package com.aava;
 
 // Import components
+import com.aava.panels.ChatPanelFree;
 import com.aava.panels.LoginPanel;
 import com.aava.panels.PlanSelector;
 import com.aava.panels.RegisterPanel;
@@ -20,6 +21,7 @@ public class Main extends JFrame {
         container.add(new RegisterPanel(layout, container), "Register");
         container.add(new LoginPanel(layout, container), "Login");
         container.add(new PlanSelector(layout, container), "PlanSelector");
+        container.add(new ChatPanelFree(layout, container), "ChatPanel");
 
         this.add(container, BorderLayout.CENTER);
 

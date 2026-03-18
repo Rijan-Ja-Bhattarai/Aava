@@ -49,7 +49,7 @@ public class PlanSelector extends JPanel {
 
         JButton personalPlanButton = new JButton("Upgrade Later");
         UIComponents.buttonStyle(personalPlanButton);
-        personalPlanButton.addActionListener(e -> {layout.show(container, "PersonalPlan");});
+        personalPlanButton.addActionListener(e -> {layout.show(container, "ChatPanel");});
         freePlanContent.add(personalPlanButton);
         freeCard.add(freePlanContent);
         return freeCard;
@@ -78,7 +78,7 @@ public class PlanSelector extends JPanel {
 
         JButton proPlanButton = new JButton("Subscribe");
         UIComponents.buttonStyle(proPlanButton);
-        proPlanButton.addActionListener(e -> {layout.show(container, "ProPlan");});
+        proPlanButton.addActionListener(e -> {layout.show(container, "ChatPanel");});
         proPlanContent.add(proPlanButton);
 
         proCard.add(proPlanContent);
