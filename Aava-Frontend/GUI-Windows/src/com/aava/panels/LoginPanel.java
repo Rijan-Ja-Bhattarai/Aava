@@ -3,6 +3,7 @@ package com.aava.panels;
 import com.aava.components.UIComponents;
 import com.aava.utils.UISpacing;
 import com.aava.utils.UITheme;
+import com.aava.utils.ValidationFunctions;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -69,27 +70,30 @@ public class LoginPanel extends JPanel {
         form.add(UIComponents.createLabel("Email"));
         form.add(Box.createVerticalStrut(UISpacing.SM));
 
-        form.add(UIComponents.createInputField());
+        JTextField email = UIComponents.createInputField();
+        form.add(email);
         form.add(Box.createVerticalStrut(UISpacing.MD));
 
         // Password Field
         form.add(UIComponents.createLabel("Password"));
         form.add(Box.createVerticalStrut(10));
 
-        form.add(UIComponents.createPasswordField());
+        JPasswordField password = UIComponents.createPasswordField();
+        form.add(password);
         form.add(Box.createVerticalStrut(UISpacing.MD));
 
         // Submit
 
         JButton loginButton = new JButton("Login");
         UIComponents.buttonStyle(loginButton);
-        loginButton.addActionListener(e -> {layout.show(container, "PlanSelector");});
+        loginButton.addActionListener(e -> {
+            if (ValidationFunctions.formValidation(email, password)) {
+                layout.show(container, "PlanSelector");
+            }
+        });
 
         form.add(loginButton);
         formRoot.add(form);
         return formRoot;
     }
-
-
-
 }

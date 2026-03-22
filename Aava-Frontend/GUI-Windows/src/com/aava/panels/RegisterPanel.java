@@ -3,6 +3,7 @@ package com.aava.panels;
 import com.aava.components.UIComponents;
 import com.aava.utils.UISpacing;
 import com.aava.utils.UITheme;
+import com.aava.utils.ValidationFunctions;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -72,7 +73,7 @@ public class RegisterPanel extends JPanel {
         JButton registerButton = new JButton("Register");
         UIComponents.buttonStyle(registerButton);
         registerButton.addActionListener(e -> {
-            if (formValidation(email, password)) {
+            if (ValidationFunctions.formValidation(email, password)) {
                 registerButton.addActionListener(f -> layout.show(container, "PlanSelector"));
             }
         });
@@ -83,27 +84,5 @@ public class RegisterPanel extends JPanel {
         return formRoot;
     }
 
-    public boolean formValidation(JTextField email, JPasswordField password) {
-        String emailVal = email.getText();
-        String passwordVal = new String(password.getPassword());
 
-        if (emailVal.isEmpty() || passwordVal.isEmpty()) {
-            JOptionPane.showMessageDialog(container, "Error:: Please fill all the fields");
-            return false;
-        }
-
-        String emailPattern = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
-        if (!emailVal.matches(emailPattern)) {
-            JOptionPane.showMessageDialog(container, "Error:: Please enter a valid email");
-            return false;
-        }
-
-        String passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
-        if (!passwordVal.matches(passwordPattern)) {
-            JOptionPane.showMessageDialog(container, "Error:: Password must be at least 8 characters with uppercase, lowercase, number and special character");
-            return false;
-        }
-
-        return true;
-    }
 }
